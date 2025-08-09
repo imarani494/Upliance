@@ -1,0 +1,14 @@
+html,
+body,
+#root {
+  height: 100%;
+}
+body {
+  font-family: Inter, Roboto, -apple-system, "Segoe UI", "Helvetica Neue", Arial;
+  margin: 0;
+  background: #f6f8fb;
+  color: #111827;
+}
+.app-container {
+  padding: 20px;
+}
