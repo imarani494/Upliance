@@ -8,7 +8,8 @@ import {
   Typography
 } from "@mui/material";
 import { DragIndicator, Delete } from "@mui/icons-material";
-import { DragDropContext, Droppable, Draggable } from "react-beautiful-dnd";
+import { DragDropContext, Droppable, Draggable } from "@hello-pangea/dnd";
+
 import { useAppDispatch } from "../../store/store";
 import { reorderFields, removeField } from "../../store/formSlice";
 

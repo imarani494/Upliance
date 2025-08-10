@@ -1,14 +1,12 @@
-// src/pages/FormCreator.tsx
-import React from "react";
-import { useDispatch, useSelector } from "react-redux";
-import { RootState } from "../store/store";
+
+import { useAppDispatch, useAppSelector } from "../store/store";
 import { addField } from "../store/formSlice";
-import type { FieldType } from "../models/formModels";
+import type { FieldType, FormField } from "../models/formModels";
 
 export default function FormCreator() {
-  const dispatch = useDispatch();
-  const fields = useSelector(
-    (state: RootState) => state.form.currentForm.fields
+  const dispatch = useAppDispatch();
+  const fields = useAppSelector(
+    (state) => state.form.currentForm.fields as FormField[]
   );
 
   const handleAddField = (type: FieldType) => {
@@ -29,7 +27,7 @@ export default function FormCreator() {
       </div>
 
       <ul>
-        {fields.map((field) => (
+        {fields.map((field: FormField) => (
           <li key={field.id}>
             {field.label} ({field.type})
           </li>

@@ -1,3 +1,4 @@
+// src/models/formModels.ts
 export type FieldType =
   | "text"
   | "number"
@@ -16,14 +17,14 @@ export type ValidationRule = {
 export interface FormField {
   id: string;
   type: FieldType;
-  label: string;
-  required: boolean;
+  label: string; // required (not optional)
+  required?: boolean;
   defaultValue?: string | number | boolean;
   options?: string[];
   validations?: ValidationRule[];
   isDerived?: boolean;
   parentFields?: string[];
-  derivationLogic?: string;
+  derivationLogic?: string | ((parents: string[]) => string);
 }
 
 export interface FormSchema {
