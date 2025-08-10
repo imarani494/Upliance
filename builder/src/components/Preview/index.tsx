@@ -13,7 +13,7 @@ const Preview: React.FC = () => {
   const form = id ? saved.find((f) => f.id === id) : undefined;
   if (!form && id) return <Typography>Form not found</Typography>;
 
-  // reuse FormRenderer style but keep simple
+ 
   const fields = form ? form.fields : build.fields;
   return (
     <Box>

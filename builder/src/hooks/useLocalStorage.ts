@@ -9,7 +9,7 @@ export const useLocalStorage = () => {
   const dispatch = useAppDispatch();
   const savedForms = useAppSelector((s) => s.form.savedForms);
 
-  // load once on mount
+ 
   useEffect(() => {
     const raw = localStorage.getItem(STORAGE_KEY);
     if (!raw) return;
@@ -21,7 +21,7 @@ export const useLocalStorage = () => {
     }
   }, [dispatch]);
 
-  // persist whenever savedForms change
+  
   useEffect(() => {
     try {
       localStorage.setItem(STORAGE_KEY, JSON.stringify(savedForms));

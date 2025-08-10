@@ -1,4 +1,4 @@
-// src/components/FormRenderer/index.tsx
+
 import React, { useEffect, useState } from "react";
 import { useAppSelector } from "../../store/store";
 import FormField from "../Shared/FormField";
@@ -50,14 +50,14 @@ const FormRenderer: React.FC = () => {
     return "";
   }
 
-  // Derived fields evaluation
+ 
   useEffect(() => {
     const derived = currentForm.fields.filter((f: FormFieldType) => f.isDerived);
     derived.forEach((f: FormFieldType) => {
       if (!f.derivationLogic) return;
 
       try {
-        // Obtain expression string
+     
         const exprStart =
           typeof f.derivationLogic === "function"
             ? f.derivationLogic(f.parentFields || [])
@@ -71,15 +71,14 @@ const FormRenderer: React.FC = () => {
           expr = expr.replace(new RegExp(pid, "g"), replacement);
         });
 
-        // Evaluate
-        // eslint-disable-next-line no-eval
+      
         const res = eval(expr);
         setValues((p) => ({ ...p, [f.id]: res }));
       } catch (e) {
         console.warn("Derived eval failed", e);
       }
     });
-    // include currentForm.fields so derived logic reacts to form structure changes
+   
   }, [values, currentForm.fields]);
 
   const handleSubmit = (e: React.FormEvent) => {
